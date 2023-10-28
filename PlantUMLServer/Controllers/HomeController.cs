@@ -1,4 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PlantUml.Net;
+using System.IO;
+using System.Net;
+using System.Reflection;
+using System.Text;
 
 namespace PlantUMLServer.Controllers
 {
@@ -6,22 +11,31 @@ namespace PlantUMLServer.Controllers
     [Route("[controller]")]
     public class HomeController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
         [HttpGet]
         [Route("/")]
-        public IEnumerable<WeatherForecast> Index()
+        public async Task<IActionResult> Index()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var vsixPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var path = Path.Combine(vsixPath, "PlantUML", "plantuml.jar");
+
+            var r = new RendererFactory()
+                .CreateRenderer(new PlantUmlSettings
+                {
+                    JavaPath = path
+                });
+
+            var d = @"@startuml
+Bob -> Alice : hello
+@enduml";
+
+            var temp = await r.RenderAsync(d, OutputFormat.Svg);
+
+            return new ContentResult()
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                Content = Encoding.UTF8.GetString(temp),
+                ContentType = "image/svg+xml",
+                StatusCode = (int)HttpStatusCode.OK
+            };
         }
     }
 }
