@@ -1,0 +1,7 @@
+C:\Workspace\DevOps\vincentdagpin\SampleProject\PlantUMLServer\PlantUMLServer\obj\Docker\publish\PlantUMLServer.exe
+C:\Workspace\DevOps\vincentdagpin\SampleProject\PlantUMLServer\PlantUMLServer\obj\Docker\publish\appsettings.Development.json
+C:\Workspace\DevOps\vincentdagpin\SampleProject\PlantUMLServer\PlantUMLServer\obj\Docker\publish\appsettings.json
+C:\Workspace\DevOps\vincentdagpin\SampleProject\PlantUMLServer\PlantUMLServer\obj\Docker\publish\PlantUMLServer.dll
+C:\Workspace\DevOps\vincentdagpin\SampleProject\PlantUMLServer\PlantUMLServer\obj\Docker\publish\PlantUMLServer.deps.json
+C:\Workspace\DevOps\vincentdagpin\SampleProject\PlantUMLServer\PlantUMLServer\obj\Docker\publish\PlantUMLServer.runtimeconfig.json
+C:\Workspace\DevOps\vincentdagpin\SampleProject\PlantUMLServer\PlantUMLServer\obj\Docker\publish\PlantUMLServer.pdb
